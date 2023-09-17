@@ -64,25 +64,38 @@ $(document).ready(function() {
       origin: "bottom"
     });
 
-  //contact form to excel sheet
-  const scriptURL = 'https://script.google.com/macros/s/AKfycbzUSaaX3XmlE5m9YLOHOBrRuCh2Ohv49N9bs4bew7xPd1qlgpvXtnudDs5Xhp3jF-Fx/exec';
-  const form = document.forms['submitToGoogleSheet']
-  const msg = document.getElementById("msg")
-
-  form.addEventListener('submit', e => {
-      e.preventDefault()
-      fetch(scriptURL, { method: 'POST', body: new FormData(form) })
-          .then(response => {
-              msg.innerHTML = "Message sent successfully"
-              setTimeout(function () {
-                  msg.innerHTML = ""
-              }, 5000)
-              form.reset()
-          })
-          .catch(error => console.error('Error!', error.message))
-  })
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzC-dR05euxMLoZmylfRgDayHuTTVs0CXPByzETLqJgP28GT4ZigYQhIFUlTZEGjNwA/exec';
+    const form = document.forms['submitToGoogleSheet'];
+    const msg = document.getElementById("msg");
     
-  });
+    form.addEventListener('submit', e => {
+        e.preventDefault();
+    
+        const formData = new FormData(form);
+        const params = new URLSearchParams();
+    
+        for (const pair of formData.entries()) {
+            params.append(pair[0], pair[1]);
+        }
+    
+        const callbackName = 'handleResponse'; // You can use any function name you like
+        window[callbackName] = function (response) {
+            if (response.success) {
+                msg.innerHTML = "Message sent successfully";
+                setTimeout(function () {
+                    msg.innerHTML = "";
+                }, 5000);
+                form.reset();
+            } else {
+                console.error('Error!', response);
+            }
+        };
+    
+        const script = document.createElement('script');
+        script.src = scriptURL + `?data=${params.toString()}&callback=${callbackName}`;
+        document.body.appendChild(script);
+    });
+    
   
   function updateActiveSection() {
     var scrollPosition = $(window).scrollTop();
