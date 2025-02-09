@@ -200,6 +200,13 @@ profile-photo .img{
 .about-skills{
   flex-basis: 35%;
 }
+.about-skills h4{
+  color: #fed700;
+  font-size: 40px;
+  line-height: 70px;
+  text-transform: capitalize;
+  margin-bottom: 20px;
+}
 .about-skills ul li{
   border-bottom: 1px dashed #ddd;
   padding-bottom: 10px;
