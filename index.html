@@ -1,175 +1,1437 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bulbul Ahmed | Software Engineer</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bulbul Ahmed - Senior Software Engineer</title>
+    <meta name="description" content="Senior Software Engineer with 5+ years experience in Java, Spring Boot, Microservices, and Cloud technologies">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #3b82f6;
+            --primary-dark: #1e40af;
+            --secondary-color: #64748b;
+            --accent-color: #06b6d4;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --text-light: #94a3b8;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --bg-tertiary: #f1f5f9;
+            --border-color: #e2e8f0;
+            --success-color: #10b981;
+            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--bg-primary);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .header.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: var(--shadow-md);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary-color);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .mobile-menu {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="%23ffffff10" points="0,1000 1000,0 1000,1000"/></svg>');
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+
+        .hero-text .subtitle {
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+        }
+
+        .hero-text .description {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: white;
+            color: var(--primary-color);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .hero-image {
+            position: relative;
+        }
+
+        .profile-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            padding: 2rem;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .social-links a:hover {
+            background: white;
+            color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        /* About Section */
+        .about {
+            padding: 6rem 0;
+            background: var(--bg-secondary);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: var(--shadow-md);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        /* Skills Section */
+        .skills {
+            padding: 6rem 0;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .skill-category h3 {
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-category i {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .skill-tag {
+            background: var(--bg-tertiary);
+            color: var(--text-secondary);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        /* Experience Section */
+        .experience {
+            padding: 6rem 0;
+            background: var(--bg-secondary);
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--border-color);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            width: 50%;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            padding-left: 3rem;
+        }
+
+        .timeline-item:nth-child(odd) {
+            padding-right: 3rem;
+        }
+
+        .timeline-content {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow-md);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .timeline-marker {
+            position: absolute;
+            top: 2rem;
+            width: 20px;
+            height: 20px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            border: 4px solid white;
+            box-shadow: var(--shadow-md);
+        }
+
+        .timeline-item:nth-child(even) .timeline-marker {
+            left: -3.5rem;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-marker {
+            right: -3.5rem;
+        }
+
+        .company-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .job-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .company-name {
+            font-size: 1.1rem;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .job-period {
+            background: var(--bg-tertiary);
+            color: var(--text-secondary);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .job-description {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tech-tag {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* Projects Section */
+        .projects {
+            padding: 6rem 0;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .project-header {
+            padding: 2rem 2rem 1rem;
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            padding: 0 2rem 2rem;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .project-link:hover {
+            color: var(--primary-dark);
+            transform: translateX(5px);
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 6rem 0;
+            background: var(--bg-secondary);
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info h3 {
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            margin-bottom: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item i {
+            width: 50px;
+            height: 50px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--border-color);
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            height: 120px;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--text-primary);
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        .footer p {
+            margin-bottom: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .footer-social {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .footer-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            background: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-grid,
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                left: 0 !important;
+                padding-left: 4rem !important;
+                padding-right: 0 !important;
+            }
+
+            .timeline-marker {
+                left: 0.6rem !important;
+                right: auto !important;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 0 15px;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        /* Scroll animations */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.6s ease;
+        }
+
+        .scroll-reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </head>
-<body class="bg-gray-900 text-gray-200 font-sans">
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <div class="logo">Bulbul Ahmed</div>
+                <ul class="nav-links">
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
 
-  <!-- Navbar -->
-  <header class="fixed w-full bg-gray-900/80 backdrop-blur z-50 shadow">
-    <nav class="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
-      <div class="text-2xl font-bold text-yellow-400">BA</div>
-      <ul class="hidden md:flex space-x-8">
-        <li><a href="#home" class="hover:text-yellow-400">Home</a></li>
-        <li><a href="#about" class="hover:text-yellow-400">About</a></li>
-        <li><a href="#experience" class="hover:text-yellow-400">Experience</a></li>
-        <li><a href="#projects" class="hover:text-yellow-400">Projects</a></li>
-        <li><a href="#education" class="hover:text-yellow-400">Education</a></li>
-        <li><a href="#contact" class="hover:text-yellow-400">Contact</a></li>
-      </ul>
-      <button class="md:hidden text-2xl"><i class="fa fa-bars"></i></button>
-    </nav>
-  </header>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="fade-in-up">Senior Software Engineer</h1>
+                    <p class="subtitle fade-in-up">Building scalable solutions with Java & Spring Boot</p>
+                    <p class="description fade-in-up">
+                        Passionate software engineer with 5+ years of experience in developing enterprise-grade 
+                        applications using Java, Spring Boot, Microservices, and cloud technologies. Proven track 
+                        record in delivering high-performance, scalable solutions.
+                    </p>
+                    <div class="cta-buttons fade-in-up">
+                        <a href="#contact" class="btn btn-primary">
+                            <i class="fas fa-envelope"></i> Get In Touch
+                        </a>
+                        <a href="#projects" class="btn btn-secondary">
+                            <i class="fas fa-code"></i> View Projects
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="profile-card">
+                        <img src="https://np.naukimg.com/jphoto/l429da8ef4d28504d7a6f1b6f75f87050a33f2d05ed5da00b6a8ee10c4b0d8526d1" 
+                             alt="Bulbul Ahmed" class="profile-img">
+                        <div class="social-links">
+                            <a href="https://github.com/ahmed-bulbul" target="_blank">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/ahmedbulbul/" target="_blank">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="https://leetcode.com/ahmed-bulbul/" target="_blank">
+                                <i class="fas fa-code"></i>
+                            </a>
+                            <a href="mailto:ahmedbulbul.cse@gmail.com">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- Hero -->
-  <section id="home" class="min-h-screen flex flex-col justify-center items-center text-center px-6">
-    <img src="https://np.naukimg.com/jphoto/l429da8ef4d28504d7a6f1b6f75f87050a33f2d05ed5da00b6a8ee10c4b0d8526d1" alt="Profile" class="w-40 h-40 rounded-full border-4 border-yellow-400 shadow-lg mb-6">
-    <h1 class="text-4xl md:text-6xl font-bold text-yellow-400">Bulbul Ahmed</h1>
-    <p class="mt-4 max-w-2xl text-gray-300">Senior Software Engineer with 6+ years of experience in Java, Spring Boot, Microservices, and scalable enterprise applications. Passionate about clean code, system design, and solving real-world problems.</p>
-    <div class="mt-6 space-x-4">
-      <a href="files/Resume_of_Bulbul_Ahmed.pdf" class="px-6 py-3 rounded-full bg-yellow-400 text-gray-900 font-semibold hover:bg-yellow-300">Download CV</a>
-      <a href="#contact" class="px-6 py-3 rounded-full border border-yellow-400 text-yellow-400 font-semibold hover:bg-yellow-300 hover:text-gray-900">Hire Me</a>
-    </div>
-    <div class="flex space-x-6 mt-8 text-xl">
-      <a href="mailto:ahmedbulbul.cse@gmail.com"><i class="fa fa-envelope"></i></a>
-      <a href="https://github.com/ahmed-bulbul"><i class="fab fa-github"></i></a>
-      <a href="https://leetcode.com/ahmed-bulbul/"><i class="fa fa-code"></i></a>
-      <a href="https://www.linkedin.com/in/ahmedbulbul/"><i class="fab fa-linkedin"></i></a>
-    </div>
-  </section>
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header scroll-reveal">
+                <h2 class="section-title">About Me</h2>
+                <p class="section-subtitle">
+                    Dedicated to creating robust, scalable software solutions
+                </p>
+            </div>
+            <div class="about-grid">
+                <div class="scroll-reveal">
+                    <p class="about-text">
+                        I'm a Senior Software Engineer with over 5 years of experience in developing 
+                        enterprise-level applications. My expertise spans across Java ecosystem, cloud 
+                        technologies, and modern development practices. I have a strong foundation in 
+                        software architecture, system design, and agile methodologies.
+                    </p>
+                    <p class="about-text">
+                        Currently working at Adventure Dhaka Limited, I focus on building scalable 
+                        microservices and implementing DevOps practices. I'm passionate about writing 
+                        clean, efficient code and continuously learning new technologies to stay at 
+                        the forefront of software development.
+                    </p>
+                </div>
+                <div class="stats-grid scroll-reveal">
+                    <div class="stat-card">
+                        <div class="stat-number">5+</div>
+                        <div class="stat-label">Years Experience</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">20+</div>
+                        <div class="stat-label">Projects Completed</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">15+</div>
+                        <div class="stat-label">Technologies</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">4</div>
+                        <div class="stat-label">Companies</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- About -->
-  <section id="about" class="py-20 bg-gray-800">
-    <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
-      <div>
-        <h2 class="text-3xl font-bold text-yellow-400 mb-6">About Me</h2>
-        <p class="text-gray-300 leading-relaxed">I am a passionate Software Engineer from Bangladesh, experienced in building enterprise-grade applications with modern Java frameworks, cloud services, and microservice architecture. I thrive in collaborative environments, constantly learn new technologies, and deliver high-quality software that makes an impact.</p>
-      </div>
-      <div>
-        <h2 class="text-3xl font-bold text-yellow-400 mb-6">Skills</h2>
-        <ul class="grid grid-cols-2 gap-3 text-gray-300">
-          <li>Java, JavaScript</li>
-          <li>Spring Boot, Microservices</li>
-          <li>Angular, React</li>
-          <li>SQL, PostgreSQL, MongoDB</li>
-          <li>Docker, Kubernetes</li>
-          <li>Azure, AWS</li>
-          <li>Kafka, RabbitMQ</li>
-          <li>Jenkins, CI/CD</li>
-        </ul>
-      </div>
-    </div>
-  </section>
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <div class="section-header scroll-reveal">
+                <h2 class="section-title">Technical Skills</h2>
+                <p class="section-subtitle">
+                    Comprehensive expertise across the full software development lifecycle
+                </p>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-category scroll-reveal">
+                    <h3><i class="fas fa-code"></i> Programming Languages</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Java</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">TypeScript</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">SQL</span>
+                    </div>
+                </div>
+                <div class="skill-category scroll-reveal">
+                    <h3><i class="fas fa-cogs"></i> Frameworks & Libraries</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Spring Boot</span>
+                        <span class="skill-tag">Spring Framework</span>
+                        <span class="skill-tag">Microservices</span>
+                        <span class="skill-tag">Angular</span>
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">Hibernate</span>
+                    </div>
+                </div>
+                <div class="skill-category scroll-reveal">
+                    <h3><i class="fas fa-database"></i> Databases</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">PostgreSQL</span>
+                        <span class="skill-tag">MySQL</span>
+                        <span class="skill-tag">MongoDB</span>
+                        <span class="skill-tag">Oracle</span>
+                        <span class="skill-tag">SQL Server</span>
+                        <span class="skill-tag">Redis</span>
+                    </div>
+                </div>
+                <div class="skill-category scroll-reveal">
+                    <h3><i class="fas fa-cloud"></i> Cloud & DevOps</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">AWS</span>
+                        <span class="skill-tag">Azure</span>
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">Kubernetes</span>
+                        <span class="skill-tag">Jenkins</span>
+                        <span class="skill-tag">Git</span>
+                    </div>
+                </div>
+                <div class="skill-category scroll-reveal">
+                    <h3><i class="fas fa-tools"></i> Tools & Technologies</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Maven</span>
+                        <span class="skill-tag">SonarQube</span>
+                        <span class="skill-tag">Kafka</span>
+                        <span class="skill-tag">RabbitMQ</span>
+                        <span class="skill-tag">Elasticsearch</span>
+                        <span class="skill-tag">Swagger</span>
+                    </div>
+                </div>
+                <div class="skill-category scroll-reveal">
+                    <h3><i class="fas fa-laptop-code"></i> Development</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Agile</span>
+                        <span class="skill-tag">CI/CD</span>
+                        <span class="skill-tag">TDD</span>
+                        <span class="skill-tag">REST APIs</span>
+                        <span class="skill-tag">Microservices</span>
+                        <span class="skill-tag">System Design</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- Experience -->
-  <section id="experience" class="py-20">
-    <div class="max-w-6xl mx-auto px-6">
-      <h2 class="text-3xl font-bold text-yellow-400 mb-12 text-center">Experience</h2>
-      <div class="space-y-8">
-        <div class="bg-gray-800 p-6 rounded-xl shadow hover:border-yellow-400 border border-transparent">
-          <h3 class="text-xl font-semibold">Senior Software Engineer – Adventure Dhaka Ltd (Feb 2025 – Present)</h3>
-          <p class="text-sm text-gray-400">skyticket.com | aventure.inc</p>
-          <ul class="list-disc ml-6 mt-3 text-gray-300 space-y-2">
-            <li>Built scalable microservices with Java, Spring Boot, PostgreSQL, Redis.</li>
-            <li>Integrated AWS Cognito, Lambda, API Gateway, Firebase, ELK, Kafka.</li>
-            <li>Optimized system performance and implemented internationalization support.</li>
-          </ul>
-        </div>
-        <div class="bg-gray-800 p-6 rounded-xl shadow">
-          <h3 class="text-xl font-semibold">Software Engineer – Arollo Tech (Jan 2024 – Feb 2025)</h3>
-          <p class="text-sm text-gray-400">Project: Click & Manage</p>
-          <ul class="list-disc ml-6 mt-3 text-gray-300 space-y-2">
-            <li>Developed features using Spring Boot, Thymeleaf, jQuery, GoJS, Jasper.</li>
-            <li>Conducted code reviews and database optimization (PostgreSQL).</li>
-          </ul>
-        </div>
-        <div class="bg-gray-800 p-6 rounded-xl shadow">
-          <h3 class="text-xl font-semibold">Software Engineer – TechnoNext Ltd (Oct 2022 – Jan 2024)</h3>
-          <ul class="list-disc ml-6 mt-3 text-gray-300 space-y-2">
-            <li>Developed Aircraft Fare Comparison & Resource Management modules.</li>
-            <li>Designed TN-Pay secure payment gateway.</li>
-            <li>Used Spring Boot, Microservices, Docker, Kubernetes, ELK.</li>
-          </ul>
-        </div>
-        <div class="bg-gray-800 p-6 rounded-xl shadow">
-          <h3 class="text-xl font-semibold">Software Engineer – Walton Group (Feb 2020 – Oct 2022)</h3>
-          <ul class="list-disc ml-6 mt-3 text-gray-300 space-y-2">
-            <li>Developed APIs for HRMS, E-commerce, School Management.</li>
-            <li>Worked as full-stack developer with Spring Boot + Angular.</li>
-            <li>Deployed apps on Tomcat & managed CI/CD with Jenkins/Azure DevOps.</li>
-          </ul>
-        </div>
-        <div class="bg-gray-800 p-6 rounded-xl shadow">
-          <h3 class="text-xl font-semibold">Android Apps Developer – Riseup Labs (Jul 2018 – Nov 2019)</h3>
-          <ul class="list-disc ml-6 mt-3 text-gray-300 space-y-2">
-            <li>Developed govt Android apps using Java, XML layouts, Firebase.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
+    <!-- Experience Section -->
+    <section id="experience" class="experience">
+        <div class="container">
+            <div class="section-header scroll-reveal">
+                <h2 class="section-title">Professional Experience</h2>
+                <p class="section-subtitle">
+                    Building innovative solutions across diverse industries
+                </p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item scroll-reveal">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="company-header">
+                            <div>
+                                <h3 class="job-title">Senior Software Engineer</h3>
+                                <h4 class="company-name">Adventure Dhaka Limited</h4>
+                            </div>
+                            <div class="job-period">Feb 2025 - Present</div>
+                        </div>
+                        <p class="job-description">
+                            Leading backend development for skyticket.com and aventure.inc platforms. 
+                            Designing scalable microservices architecture with AWS integration, implementing 
+                            real-time notifications, and optimizing performance with Redis caching.
+                        </p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Java</span>
+                            <span class="tech-tag">Spring Boot</span>
+                            <span class="tech-tag">AWS</span>
+                            <span class="tech-tag">Microservices</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">Kafka</span>
+                            <span class="tech-tag">Redis</span>
+                            <span class="tech-tag">Elasticsearch</span>
+                        </div>
+                    </div>
+                </div>
 
-  <!-- Projects -->
-  <section id="projects" class="py-20 bg-gray-800">
-    <div class="max-w-6xl mx-auto px-6">
-      <h2 class="text-3xl font-bold text-yellow-400 mb-12 text-center">Projects</h2>
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="bg-gray-900 p-6 rounded-xl shadow hover:border-yellow-400 border border-transparent">
-          <h3 class="text-xl font-semibold">Click & Manage</h3>
-          <p class="text-sm text-gray-400 mb-3">Spring Boot, Thymeleaf, PostgreSQL</p>
-          <a href="https://click-n-manage.com" class="text-yellow-400 hover:underline">Live Project →</a>
-        </div>
-        <div class="bg-gray-900 p-6 rounded-xl shadow">
-          <h3 class="text-xl font-semibold">ARM – Aircraft Resource Management</h3>
-          <p class="text-sm text-gray-400">Spring Boot, React, SQL Server, AWS</p>
-        </div>
-        <div class="bg-gray-900 p-6 rounded-xl shadow">
-          <h3 class="text-xl font-semibold">HRMS – Human Resource Management System</h3>
-          <p class="text-sm text-gray-400">Spring Boot, Angular, PostgreSQL</p>
-        </div>
-        <div class="bg-gray-900 p-6 rounded-xl shadow">
-          <h3 class="text-xl font-semibold">Census Project</h3>
-          <p class="text-sm text-gray-400">Spring Boot, Angular, Oracle</p>
-        </div>
-        <div class="bg-gray-900 p-6 rounded-xl shadow">
-          <h3 class="text-xl font-semibold">FitPro</h3>
-          <p class="text-sm text-gray-400">Spring Boot, Oracle</p>
-        </div>
-        <div class="bg-gray-900 p-6 rounded-xl shadow">
-          <h3 class="text-xl font-semibold">School Management System</h3>
-          <p class="text-sm text-gray-400">Spring Boot, Angular, PostgreSQL</p>
-        </div>
-      </div>
-    </div>
-  </section>
+                <div class="timeline-item scroll-reveal">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="company-header">
+                            <div>
+                                <h3 class="job-title">Software Engineer</h3>
+                                <h4 class="company-name">Arollo Tech Limited</h4>
+                            </div>
+                            <div class="job-period">Jan 2024 - Feb 2025</div>
+                        </div>
+                        <p class="job-description">
+                            Developed and enhanced Click & Manage enterprise application. Conducted code reviews, 
+                            implemented secure functionalities using Spring Security, and worked with cross-functional 
+                            teams to deliver high-quality software solutions.
+                        </p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Java</span>
+                            <span class="tech-tag">Spring Boot</span>
+                            <span class="tech-tag">Thymeleaf</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">Jasper Reports</span>
+                            <span class="tech-tag">jQuery</span>
+                        </div>
+                    </div>
+                </div>
 
-  <!-- Education -->
-  <section id="education" class="py-20">
-    <div class="max-w-4xl mx-auto px-6 text-center">
-      <h2 class="text-3xl font-bold text-yellow-400 mb-8">Education</h2>
-      <p class="text-gray-300">B.Sc. in Computer Science & Engineering – National University, Dhaka (2014 – 2018), GPA: 3.28</p>
-      <h3 class="mt-6 text-2xl font-semibold text-yellow-400">Certifications</h3>
-      <p class="text-gray-300">Android Apps Development – Eshikhon (2017)</p>
-    </div>
-  </section>
+                <div class="timeline-item scroll-reveal">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="company-header">
+                            <div>
+                                <h3 class="job-title">Software Engineer</h3>
+                                <h4 class="company-name">TechnoNext Limited</h4>
+                            </div>
+                            <div class="job-period">Oct 2022 - Jan 2024</div>
+                        </div>
+                        <p class="job-description">
+                            Built aircraft fare comparison modules and payment gateway solutions. Implemented 
+                            OAuth 2.0 security, containerized applications with Docker, and deployed on Kubernetes. 
+                            Focused on scalability and performance optimization.
+                        </p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Java</span>
+                            <span class="tech-tag">Spring Boot</span>
+                            <span class="tech-tag">Microservices</span>
+                            <span class="tech-tag">Docker</span>
+                            <span class="tech-tag">Kubernetes</span>
+                            <span class="tech-tag">OAuth 2.0</span>
+                            <span class="tech-tag">ELK Stack</span>
+                        </div>
+                    </div>
+                </div>
 
-  <!-- Contact -->
-  <section id="contact" class="py-20 bg-gray-800">
-    <div class="max-w-4xl mx-auto px-6 text-center">
-      <h2 class="text-3xl font-bold text-yellow-400 mb-6">Get In Touch</h2>
-      <p class="text-gray-300 mb-8">Feel free to reach out for collaboration or opportunities.</p>
-      <a href="mailto:ahmedbulbul.cse@gmail.com" class="px-8 py-3 bg-yellow-400 text-gray-900 font-semibold rounded-full hover:bg-yellow-300">Email Me</a>
-    </div>
-  </section>
+                <div class="timeline-item scroll-reveal">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="company-header">
+                            <div>
+                                <h3 class="job-title">Software Engineer</h3>
+                                <h4 class="company-name">Walton Group</h4>
+                            </div>
+                            <div class="job-period">Feb 2020 - Oct 2022</div>
+                        </div>
+                        <p class="job-description">
+                            Full-stack developer for HRMS, E-Commerce, and School Management systems. 
+                            Implemented payroll modules, authentication systems, and report generation. 
+                            Deployed applications on Tomcat servers and managed CI/CD pipelines.
+                        </p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Java</span>
+                            <span class="tech-tag">Angular</span>
+                            <span class="tech-tag">MySQL</span>
+                            <span class="tech-tag">Jenkins</span>
+                            <span class="tech-tag">Azure DevOps</span>
+                            <span class="tech-tag">Tomcat</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- Footer -->
-  <footer class="py-6 text-center text-gray-500 text-sm border-t border-gray-700">
-    © 2025 Bulbul Ahmed. All Rights Reserved.
-  </footer>
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <div class="section-header scroll-reveal">
+                <h2 class="section-title">Featured Projects</h2>
+                <p class="section-subtitle">
+                    Showcasing innovative solutions and technical expertise
+                </p>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card scroll-reveal">
+                    <div class="project-header">
+                        <h3 class="project-title">Click & Manage</h3>
+                        <p class="project-description">
+                            Enterprise-level document and stakeholder management system with advanced 
+                            reporting capabilities. Features include company management, employee tracking, 
+                            and comprehensive dashboard analytics.
+                        </p>
+                        <a href="https://click-n-manage.com" class="project-link" target="_blank">
+                            <i class="fas fa-external-link-alt"></i> View Live Project
+                        </a>
+                    </div>
+                    <div class="project-tech">
+                        <span class="skill-tag">Spring Boot</span>
+                        <span class="skill-tag">Thymeleaf</span>
+                        <span class="skill-tag">PostgreSQL</span>
+                        <span class="skill-tag">Jasper Reports</span>
+                        <span class="skill-tag">jQuery</span>
+                    </div>
+                </div>
 
+                <div class="project-card scroll-reveal">
+                    <div class="project-header">
+                        <h3 class="project-title">ARM - Airplane Resource Management</h3>
+                        <p class="project-description">
+                            Comprehensive airplane resource management system with modules for procurement, 
+                            planning, logistics, and audit management. Built with modern architecture 
+                            and deployed on AWS cloud platform.
+                        </p>
+                    </div>
+                    <div class="project-tech">
+                        <span class="skill-tag">Spring Boot</span>
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">SQL Server</span>
+                        <span class="skill-tag">AWS</span>
+                        <span class="skill-tag">Microservices</span>
+                    </div>
+                </div>
+
+                <div class="project-card scroll-reveal">
+                    <div class="project-header">
+                        <h3 class="project-title">HRMS - Human Resource Management</h3>
+                        <p class="project-description">
+                            Full-featured HR management system for Walton Group with employee management, 
+                            attendance tracking, payroll processing, and self-service portal. Integrated 
+                            with biometric devices for attendance.
+                        </p>
+                    </div>
+                    <div class="project-tech">
+                        <span class="skill-tag">Spring Boot</span>
+                        <span class="skill-tag">Angular</span>
+                        <span class="skill-tag">PostgreSQL</span>
+                        <span class="skill-tag">Jasper Reports</span>
+                        <span class="skill-tag">Jenkins</span>
+                    </div>
+                </div>
+
+                <div class="project-card scroll-reveal">
+                    <div class="project-header">
+                        <h3 class="project-title">TN-Pay Payment Gateway</h3>
+                        <p class="project-description">
+                            Secure payment gateway solution with OAuth 2.0 authentication, transaction 
+                            processing, and comprehensive reporting. Implemented with high security 
+                            standards and scalable architecture.
+                        </p>
+                    </div>
+                    <div class="project-tech">
+                        <span class="skill-tag">Spring Boot</span>
+                        <span class="skill-tag">OAuth 2.0</span>
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">Kubernetes</span>
+                        <span class="skill-tag">PostgreSQL</span>
+                    </div>
+                </div>
+
+                <div class="project-card scroll-reveal">
+                    <div class="project-header">
+                        <h3 class="project-title">FitPro Health Tracker</h3>
+                        <p class="project-description">
+                            Smart weight scale application with mobile integration. Features weight 
+                            management, heart rate analysis, and health metrics tracking with 
+                            real-time synchronization across devices.
+                        </p>
+                    </div>
+                    <div class="project-tech">
+                        <span class="skill-tag">Spring Boot</span>
+                        <span class="skill-tag">Oracle</span>
+                        <span class="skill-tag">REST API</span>
+                        <span class="skill-tag">Mobile Integration</span>
+                    </div>
+                </div>
+
+                <div class="project-card scroll-reveal">
+                    <div class="project-header">
+                        <h3 class="project-title">School Management System</h3>
+                        <p class="project-description">
+                            Comprehensive school management platform with student information system, 
+                            staff management, online examinations, attendance tracking, and academic 
+                            reporting functionalities.
+                        </p>
+                    </div>
+                    <div class="project-tech">
+                        <span class="skill-tag">Spring Boot</span>
+                        <span class="skill-tag">Angular</span>
+                        <span class="skill-tag">PostgreSQL</span>
+                        <span class="skill-tag">Jasper Reports</span>
+                        <span class="skill-tag">Tomcat</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header scroll-reveal">
+                <h2 class="section-title">Get In Touch</h2>
+                <p class="section-subtitle">
+                    Ready to discuss your next project or opportunity
+                </p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info scroll-reveal">
+                    <h3>Let's Connect</h3>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>ahmedbulbul.cse@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Phone</h4>
+                            <p>+880-1558953396</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Location</h4>
+                            <p>Dhaka, Bangladesh</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-linkedin"></i>
+                        <div>
+                            <h4>LinkedIn</h4>
+                            <p>linkedin.com/in/ahmedbulbul</p>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form scroll-reveal">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">
+                        <i class="fas fa-paper-plane"></i> Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Bulbul Ahmed. All rights reserved.</p>
+            <p>Senior Software Engineer | Java & Spring Boot Specialist</p>
+            <div class="footer-social">
+                <a href="https://github.com/ahmed-bulbul" target="_blank">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/ahmedbulbul/" target="_blank">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://leetcode.com/ahmed-bulbul/" target="_blank">
+                    <i class="fas fa-code"></i>
+                </a>
+                <a href="mailto:ahmedbulbul.cse@gmail.com">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                const headerHeight = document.querySelector('.header').offsetHeight;
+                const targetPosition = target.offsetTop - headerHeight;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Active navigation link
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Scroll reveal animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.scroll-reveal').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Contact form submission
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const name = formData.get('name');
+            const email = formData.get('email');
+            const subject = formData.get('subject');
+            const message = formData.get('message');
+            
+            // Create mailto link
+            const mailtoLink = `mailto:ahmedbulbul.cse@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)}`;
+            
+            // Open email client
+            window.location.href = mailtoLink;
+            
+            // Show success message
+            alert('Email client opened! Your message is ready to send.');
+            
+            // Reset form
+            this.reset();
+        });
+
+        // Mobile menu toggle (basic implementation)
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        // Typing animation for hero subtitle
+        const subtitle = document.querySelector('.hero-text .subtitle');
+        const originalText = subtitle.textContent;
+        subtitle.textContent = '';
+        
+        let i = 0;
+        function typeWriter() {
+            if (i < originalText.length) {
+                subtitle.textContent += originalText.charAt(i);
+                i++;
+                setTimeout(typeWriter, 100);
+            }
+        }
+        
+        // Start typing animation after page load
+        window.addEventListener('load', () => {
+            setTimeout(typeWriter, 1000);
+        });
+
+        // Add loading animation
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '0';
+            setTimeout(() => {
+                document.body.style.transition = 'opacity 0.5s ease';
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+    </script>
 </body>
 </html>
