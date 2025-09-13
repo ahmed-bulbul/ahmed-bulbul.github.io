@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses - Bulbul Ahmed</title>
+    <meta name="description" content="Professional courses in Java, Spring Boot, Angular, Full Stack Development and more by Senior Software Engineer Bulbul Ahmed">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #3b82f6;
+            --primary-dark: #1e40af;
+            --secondary-color: #64748b;
+            --accent-color: #06b6d4;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --text-light: #94a3b8;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --bg-tertiary: #f1f5f9;
+            --border-color: #e2e8f0;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--bg-primary);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .header.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: var(--shadow-md);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary-color);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .mobile-menu {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 50vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+            overflow: hidden;
+            margin-top: 80px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="%23ffffff10" points="0,1000 1000,0 1000,1000"/></svg>');
+        }
+
+        .hero-content {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            color: white;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+
+        .hero-content .subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+
+        .hero-content .description {
+            font-size: 1.1rem;
+            opacity: 0.8;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            line-height: 1.7;
+        }
+
+        /* Courses Section */
+        .courses {
+            padding: 6rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .courses-filter {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: var(--bg-tertiary);
+            color: var(--text-secondary);
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 2rem;
+        }
+
+        .course-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .course-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .course-image {
+            height: 200px;
+            background: var(--gradient);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .course-image i {
+            font-size: 4rem;
+        }
+
+        .course-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+        }
+
+        .course-content {
+            padding: 2rem;
+        }
+
+        .course-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .course-description {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .course-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .course-level {
+            background: var(--bg-tertiary);
+            color: var(--text-secondary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .course-level.beginner {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--success-color);
+        }
+
+        .course-level.intermediate {
+            background: rgba(245, 158, 11, 0.1);
+            color: var(--warning-color);
+        }
+
+        .course-level.advanced {
+            background: rgba(239, 68, 68, 0.1);
+            color: #ef4444;
+        }
+
+        .course-duration {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .course-features {
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-list {
+            list-style: none;
+            display: grid;
+            gap: 0.5rem;
+        }
+
+        .feature-list li {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .feature-list li i {
+            color: var(--success-color);
+            font-size: 0.8rem;
+        }
+
+        .course-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-tag {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .course-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 0.9rem;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: var(--bg-tertiary);
+            color: var(--text-secondary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .course-price {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        /* Stats Section */
+        .stats {
+            padding: 4rem 0;
+            background: var(--bg-secondary);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: var(--shadow-md);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 6rem 0;
+            background: var(--gradient);
+            color: white;
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .cta p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-white {
+            background: white;
+            color: var(--primary-color);
+        }
+
+        .btn-white:hover {
+            background: var(--bg-secondary);
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--text-primary);
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        .footer p {
+            margin-bottom: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .footer-social {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .footer-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            background: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .courses-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .course-meta {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .course-actions {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .container {
+                padding: 0 15px;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.6s ease;
+        }
+
+        .scroll-reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Course Category Styles */
+        .course-card[data-category="fullstack"] .course-image {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .course-card[data-category="backend"] .course-image {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .course-card[data-category="frontend"] .course-image {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .course-card[data-category="mobile"] .course-image {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        }
+
+        .course-card[data-category="devops"] .course-image {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="index.html" class="logo">Bulbul Ahmed</a>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#skills">Skills</a></li>
+                    <li><a href="index.html#experience">Experience</a></li>
+                    <li><a href="index.html#projects">Projects</a></li>
+                    <li><a href="service.html">Services</a></li>
+                    <li><a href="#" class="active">Courses</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+                <div class="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="fade-in-up">Professional Courses</h1>
+                <p class="subtitle fade-in-up">Master Modern Development Technologies</p>
+                <p class="description fade-in-up">
+                    Learn from industry experience with comprehensive courses covering Full Stack Development, 
+                    Spring Boot, Angular, Microservices, and more. Gain practical skills with real-world projects.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card scroll-reveal">
+                    <div class="stat-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">Students Trained</div>
+                </div>
+                <div class="stat-card scroll-reveal">
+                    <div class="stat-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <div class="stat-number">12</div>
+                    <div class="stat-label">Course Modules</div>
+                </div>
+                <div class="stat-card scroll-reveal">
+                    <div class="stat-icon">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Hands-on Projects</div>
+                </div>
+                <div class="stat-card scroll-reveal">
+                    <div class="stat-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="stat-number">4.9</div>
+                    <div class="stat-label">Average Rating</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section class="courses">
+        <div class="container">
+            <div class="section-header scroll-reveal">
+                <h2 class="section-title">Available Courses</h2>
+                <p class="section-subtitle">
+                    Comprehensive training programs designed for practical industry skills
+                </p>
+            </div>
+
+            <!-- Filter Buttons -->
+            <div class="courses-filter scroll-reveal">
+                <button class="filter-btn active" data-filter="all">All Courses</button>
+                <button class="filter-btn" data-filter="fullstack">Full Stack</button>
+                <button class="filter-btn" data-filter="backend">Backend</button>
+                <button class="filter-btn" data-filter="frontend">Frontend</button>
+                <button class="filter-btn" data-filter="mobile">Mobile</button>
+                <button class="filter-btn" data-filter="devops">DevOps</button>
+            </div>
+
+            <!-- Courses Grid -->
+            <div class="courses-grid">
+                <!-- Full Stack Java Course -->
+                <div class="course-card scroll-reveal" data-category="fullstack">
+                    <div class="course-image">
+                        <i class="fas fa-laptop-code"></i>
+                        <div class="course-badge">Popular</div>
+                    </div>
+                    <div class="course-content">
+                        <h3 class="course-title">Complete Java Full Stack Development</h3>
+                        <p class="course-description">
+                            Master full stack development with Java Spring Boot backend and modern frontend technologies. 
+                            Build production-ready applications from scratch.
+                        </p>
+                        <div class="course-meta">
+                            <span class="course-level intermediate">Intermediate</span>
+                            <div class="course-duration">
+                                <i class="fas fa-clock"></i>
+                                <span>12 weeks</span>
+                            </div>
+                        </div>
+                        <div class="course-features">
+                            <ul class="feature-list">
+                                <li><i class="fas fa-check-circle"></i> Spring Boot REST APIs</li>
+                                <li><i class="fas fa-check-circle"></i> Angular/React Frontend</li>
+                                <li><i class="fas fa-check-circle"></i> Database Integration</li>
+                                <li><i class="fas fa-check-circle"></i> Microservices Architecture</li>
+                                <li><i class="fas fa-check-circle"></i> AWS Deployment</li>
+                            </ul>
+                        </div>
+                        <div class="course-tech">
+                            <span class="tech-tag">Spring Cloud</span>
+                            <span class="tech-tag">Docker</span>
+                            <span class="tech-tag">Kubernetes</span>
+                            <span class="tech-tag">Kafka</span>
+                            <span class="tech-tag">Eureka</span>
+                        </div>
+                        <div class="course-actions">
+                            <a href="#contact" class="btn btn-primary">
+                                <i class="fas fa-play"></i> Enroll Now
+                            </a>
+                            <span class="course-price">12000 BDT</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- React Development -->
+                <div class="course-card scroll-reveal" data-category="frontend">
+                    <div class="course-image">
+                        <i class="fab fa-react"></i>
+                    </div>
+                    <div class="course-content">
+                        <h3 class="course-title">React Development Bootcamp</h3>
+                        <p class="course-description">
+                            Build modern web applications with React. Learn hooks, context API, state management, 
+                            and integrate with backend APIs for full-stack applications.
+                        </p>
+                        <div class="course-meta">
+                            <span class="course-level intermediate">Intermediate</span>
+                            <div class="course-duration">
+                                <i class="fas fa-clock"></i>
+                                <span>8 weeks</span>
+                            </div>
+                        </div>
+                        <div class="course-features">
+                            <ul class="feature-list">
+                                <li><i class="fas fa-check-circle"></i> Modern React Hooks</li>
+                                <li><i class="fas fa-check-circle"></i> Context API & Redux</li>
+                                <li><i class="fas fa-check-circle"></i> API Integration</li>
+                                <li><i class="fas fa-check-circle"></i> Testing with Jest</li>
+                                <li><i class="fas fa-check-circle"></i> Deployment Strategies</li>
+                            </ul>
+                        </div>
+                        <div class="course-tech">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Redux</span>
+                            <span class="tech-tag">Jest</span>
+                            <span class="tech-tag">Axios</span>
+                            <span class="tech-tag">Webpack</span>
+                        </div>
+                        <div class="course-actions">
+                            <a href="#contact" class="btn btn-primary">
+                                <i class="fas fa-play"></i> Enroll Now
+                            </a>
+                            <span class="course-price">2000 BDT</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DevOps Essentials -->
+                <div class="course-card scroll-reveal" data-category="devops">
+                    <div class="course-image">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <div class="course-content">
+                        <h3 class="course-title">DevOps Essentials</h3>
+                        <p class="course-description">
+                            Master DevOps practices with Docker, Kubernetes, Jenkins, and AWS. Learn CI/CD pipelines, 
+                            infrastructure as code, and monitoring solutions.
+                        </p>
+                        <div class="course-meta">
+                            <span class="course-level intermediate">Intermediate</span>
+                            <div class="course-duration">
+                                <i class="fas fa-clock"></i>
+                                <span>12 weeks</span>
+                            </div>
+                        </div>
+                        <div class="course-features">
+                            <ul class="feature-list">
+                                <li><i class="fas fa-check-circle"></i> Docker Containerization</li>
+                                <li><i class="fas fa-check-circle"></i> Kubernetes Orchestration</li>
+                                <li><i class="fas fa-check-circle"></i> CI/CD with Jenkins</li>
+                                <li><i class="fas fa-check-circle"></i> AWS Cloud Services</li>
+                                <li><i class="fas fa-check-circle"></i> Monitoring & Logging</li>
+                            </ul>
+                        </div>
+                        <div class="course-tech">
+                            <span class="tech-tag">Docker</span>
+                            <span class="tech-tag">Kubernetes</span>
+                            <span class="tech-tag">Jenkins</span>
+                            <span class="tech-tag">AWS</span>
+                            <span class="tech-tag">Terraform</span>
+                        </div>
+                        <div class="course-actions">
+                            <a href="#contact" class="btn btn-primary">
+                                <i class="fas fa-play"></i> Enroll Now
+                            </a>
+                            <span class="course-price">25000 BDT</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mobile App Development -->
+                <div class="course-card scroll-reveal" data-category="mobile">
+                    <div class="course-image">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <div class="course-content">
+                        <h3 class="course-title">Flutter Mobile Development</h3>
+                        <p class="course-description">
+                            Build cross-platform mobile applications with Flutter. Create beautiful, natively compiled 
+                            applications for mobile, web, and desktop from a single codebase.
+                        </p>
+                        <div class="course-meta">
+                            <span class="course-level beginner">Beginner</span>
+                            <div class="course-duration">
+                                <i class="fas fa-clock"></i>
+                                <span>10 weeks</span>
+                            </div>
+                        </div>
+                        <div class="course-features">
+                            <ul class="feature-list">
+                                <li><i class="fas fa-check-circle"></i> Dart Programming</li>
+                                <li><i class="fas fa-check-circle"></i> Widget Development</li>
+                                <li><i class="fas fa-check-circle"></i> State Management</li>
+                                <li><i class="fas fa-check-circle"></i> API Integration</li>
+                                <li><i class="fas fa-check-circle"></i> App Store Deployment</li>
+                            </ul>
+                        </div>
+                        <div class="course-tech">
+                            <span class="tech-tag">Flutter</span>
+                            <span class="tech-tag">Dart</span>
+                            <span class="tech-tag">Firebase</span>
+                            <span class="tech-tag">Provider</span>
+                            <span class="tech-tag">REST API</span>
+                        </div>
+                        <div class="course-actions">
+                            <a href="#contact" class="btn btn-primary">
+                                <i class="fas fa-play"></i> Enroll Now
+                            </a>
+                            <span class="course-price">20000 BDT</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Database Design -->
+                <div class="course-card scroll-reveal" data-category="backend">
+                    <div class="course-image">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <div class="course-content">
+                        <h3 class="course-title">Database Design & Optimization</h3>
+                        <p class="course-description">
+                            Master database design principles, SQL optimization, and NoSQL databases. Learn to build 
+                            scalable data solutions for enterprise applications.
+                        </p>
+                        <div class="course-meta">
+                            <span class="course-level intermediate">Intermediate</span>
+                            <div class="course-duration">
+                                <i class="fas fa-clock"></i>
+                                <span>8 weeks</span>
+                            </div>
+                        </div>
+                        <div class="course-features">
+                            <ul class="feature-list">
+                                <li><i class="fas fa-check-circle"></i> Database Normalization</li>
+                                <li><i class="fas fa-check-circle"></i> Query Optimization</li>
+                                <li><i class="fas fa-check-circle"></i> Index Strategies</li>
+                                <li><i class="fas fa-check-circle"></i> NoSQL Patterns</li>
+                                <li><i class="fas fa-check-circle"></i> Performance Tuning</li>
+                            </ul>
+                        </div>
+                        <div class="course-tech">
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">MongoDB</span>
+                            <span class="tech-tag">Redis</span>
+                            <span class="tech-tag">SQL</span>
+                            <span class="tech-tag">NoSQL</span>
+                        </div>
+                        <div class="course-actions">
+                            <a href="#contact" class="btn btn-primary">
+                                <i class="fas fa-play"></i> Enroll Now
+                            </a>
+                            <span class="course-price">5000 BDT</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Java Fundamentals -->
+                <div class="course-card scroll-reveal" data-category="backend">
+                    <div class="course-image">
+                        <i class="fab fa-java"></i>
+                    </div>
+                    <div class="course-content">
+                        <h3 class="course-title">Java Programming Fundamentals</h3>
+                        <p class="course-description">
+                            Start your programming journey with Java. Learn core concepts, object-oriented programming, 
+                            data structures, and algorithms with hands-on projects.
+                        </p>
+                        <div class="course-meta">
+                            <span class="course-level beginner">Beginner</span>
+                            <div class="course-duration">
+                                <i class="fas fa-clock"></i>
+                                <span>10 weeks</span>
+                            </div>
+                        </div>
+                        <div class="course-features">
+                            <ul class="feature-list">
+                                <li><i class="fas fa-check-circle"></i> Core Java Concepts</li>
+                                <li><i class="fas fa-check-circle"></i> OOP Principles</li>
+                                <li><i class="fas fa-check-circle"></i> Data Structures</li>
+                                <li><i class="fas fa-check-circle"></i> Exception Handling</li>
+                                <li><i class="fas fa-check-circle"></i> Unit Testing</li>
+                            </ul>
+                        </div>
+                        <div class="course-tech">
+                            <span class="tech-tag">Java</span>
+                            <span class="tech-tag">JUnit</span>
+                            <span class="tech-tag">Maven</span>
+                            <span class="tech-tag">Git</span>
+                            <span class="tech-tag">IntelliJ</span>
+                        </div>
+                        <div class="course-actions">
+                            <a href="#contact" class="btn btn-primary">
+                                <i class="fas fa-play"></i> Enroll Now
+                            </a>
+                            <span class="course-price">10000 BDT</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to Start Your Learning Journey?</h2>
+            <p>Join hundreds of developers who have transformed their careers with our courses</p>
+            <div class="cta-buttons">
+                <a href="#contact" class="btn btn-white">
+                    <i class="fas fa-phone"></i> Schedule Consultation
+                </a>
+                <a href="mailto:ahmedbulbul.cse@gmail.com" class="btn btn-white">
+                    <i class="fas fa-envelope"></i> Get Course Details
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact" style="padding: 6rem 0; background: var(--bg-secondary);">
+        <div class="container">
+            <div class="section-header scroll-reveal">
+                <h2 class="section-title">Enroll Today</h2>
+                <p class="section-subtitle">
+                    Ready to advance your career? Get in touch to discuss course details and enrollment
+                </p>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
+                <div class="scroll-reveal">
+                    <h3 style="font-size: 1.5rem; color: var(--text-primary); margin-bottom: 2rem;">Course Information</h3>
+                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
+                        <i class="fas fa-envelope" style="width: 50px; height: 50px; background: var(--primary-color); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center;"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>ahmedbulbul.cse@gmail.com</p>
+                        </div>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
+                        <i class="fas fa-phone" style="width: 50px; height: 50px; background: var(--primary-color); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center;"></i>
+                        <div>
+                            <h4>Phone</h4>
+                            <p>+880-1558953396</p>
+                        </div>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
+                        <i class="fas fa-calendar" style="width: 50px; height: 50px; background: var(--primary-color); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center;"></i>
+                        <div>
+                            <h4>Schedule Call</h4>
+                            <p><a href="https://calendly.com/ahmedbulbul" target="_blank" style="color: var(--primary-color); text-decoration: none;">Book a consultation</a></p>
+                        </div>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
+                        <i class="fab fa-linkedin" style="width: 50px; height: 50px; background: var(--primary-color); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center;"></i>
+                        <div>
+                            <h4>LinkedIn</h4>
+                            <p><a href="https://www.linkedin.com/in/ahmedbulbul/" target="_blank" style="color: var(--primary-color); text-decoration: none;">Connect with me</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="scroll-reveal" style="background: white; padding: 3rem; border-radius: 20px; box-shadow: var(--shadow-md);">
+                    <form>
+                        <div style="margin-bottom: 1.5rem;">
+                            <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--text-primary);">Name</label>
+                            <input type="text" required style="width: 100%; padding: 1rem; border: 2px solid var(--border-color); border-radius: 10px; font-size: 1rem;">
+                        </div>
+                        <div style="margin-bottom: 1.5rem;">
+                            <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--text-primary);">Email</label>
+                            <input type="email" required style="width: 100%; padding: 1rem; border: 2px solid var(--border-color); border-radius: 10px; font-size: 1rem;">
+                        </div>
+                        <div style="margin-bottom: 1.5rem;">
+                            <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--text-primary);">Interested Course</label>
+                            <select required style="width: 100%; padding: 1rem; border: 2px solid var(--border-color); border-radius: 10px; font-size: 1rem;">
+                                <option value="">Select a course</option>
+                                <option value="fullstack">Complete Java Full Stack Development</option>
+                                <option value="springboot">Spring Boot Mastery</option>
+                                <option value="angular">Angular Complete Guide</option>
+                                <option value="microservices">Microservices Architecture</option>
+                                <option value="react">React Development Bootcamp</option>
+                                <option value="devops">DevOps Essentials</option>
+                                <option value="flutter">Flutter Mobile Development</option>
+                                <option value="database">Database Design & Optimization</option>
+                                <option value="java">Java Programming Fundamentals</option>
+                            </select>
+                        </div>
+                        <div style="margin-bottom: 1.5rem;">
+                            <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--text-primary);">Message</label>
+                            <textarea required style="width: 100%; padding: 1rem; border: 2px solid var(--border-color); border-radius: 10px; font-size: 1rem; resize: vertical; height: 120px;"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">
+                            <i class="fas fa-paper-plane"></i> Send Inquiry
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Bulbul Ahmed. All rights reserved.</p>
+            <p>Senior Software Engineer | Professional Training & Courses</p>
+            <div class="footer-social">
+                <a href="https://github.com/ahmed-bulbul" target="_blank">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/ahmedbulbul/" target="_blank">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://leetcode.com/ahmed-bulbul/" target="_blank">
+                    <i class="fas fa-code"></i>
+                </a>
+                <a href="mailto:ahmedbulbul.cse@gmail.com">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Course filtering
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const courseCards = document.querySelectorAll('.course-card');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
+
+                const filter = button.getAttribute('data-filter');
+
+                courseCards.forEach(card => {
+                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                        card.style.display = 'block';
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'translateY(0)';
+                        }, 100);
+                    } else {
+                        card.style.opacity = '0';
+                        card.style.transform = 'translateY(20px)';
+                        setTimeout(() => {
+                            card.style.display = 'none';
+                        }, 300);
+                    }
+                });
+            });
+        });
+
+        // Scroll reveal animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.scroll-reveal').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Form submission
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const name = formData.get('name') || this.querySelector('input[type="text"]').value;
+            const email = formData.get('email') || this.querySelector('input[type="email"]').value;
+            const course = this.querySelector('select') ? this.querySelector('select').value : '';
+            const message = this.querySelector('textarea').value;
+            
+            const subject = `Course Inquiry: ${course || 'General Inquiry'}`;
+            const body = `Name: ${name}\nEmail: ${email}\nInterested Course: ${course || 'Not specified'}\n\nMessage:\n${message}`;
+            
+            const mailtoLink = `mailto:ahmedbulbul.cse@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            
+            window.location.href = mailtoLink;
+            
+            alert('Email client opened! Your inquiry is ready to send.');
+            this.reset();
+        });
+
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerHeight = document.querySelector('.header').offsetHeight;
+                    const targetPosition = target.offsetTop - headerHeight;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
