@@ -1,0 +1,1155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - Bulbul Ahmed</title>
+    <meta name="description" content="Professional software development services - Java, Spring Boot, Microservices, Cloud Solutions">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #3b82f6;
+            --primary-dark: #1e40af;
+            --secondary-color: #64748b;
+            --accent-color: #06b6d4;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --text-light: #94a3b8;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --bg-tertiary: #f1f5f9;
+            --border-color: #e2e8f0;
+            --success-color: #10b981;
+            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--bg-primary);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .header.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: var(--shadow-md);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary-color);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .mobile-menu {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            background: var(--gradient);
+            position: relative;
+            overflow: hidden;
+            margin-top: 80px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="%23ffffff10" points="0,1000 1000,0 1000,1000"/></svg>');
+        }
+
+        .hero-content {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 1rem;
+        }
+
+        .breadcrumb a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .breadcrumb a:hover {
+            color: white;
+        }
+
+        /* Services Overview */
+        .services-overview {
+            padding: 6rem 0;
+            background: var(--bg-secondary);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .services-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: var(--shadow-md);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        /* Core Services */
+        .core-services {
+            padding: 6rem 0;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .service-header {
+            background: var(--gradient);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .service-subtitle {
+            opacity: 0.9;
+            font-size: 1rem;
+        }
+
+        .service-content {
+            padding: 2rem;
+        }
+
+        .service-description {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+
+        .service-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .service-features li {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .service-features li i {
+            color: var(--success-color);
+            font-size: 0.9rem;
+        }
+
+        .service-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tech-tag {
+            background: var(--bg-tertiary);
+            color: var(--text-secondary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .service-price {
+            background: var(--bg-secondary);
+            padding: 1.5rem 2rem;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .price-text {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        /* Process Section */
+        .process {
+            padding: 6rem 0;
+            background: var(--bg-secondary);
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .process-step {
+            background: white;
+            padding: 2.5rem 2rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: var(--shadow-md);
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .process-step:hover {
+            transform: translateY(-5px);
+        }
+
+        .step-number {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 40px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .step-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .step-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .step-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Why Choose Me */
+        .why-choose {
+            padding: 6rem 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: white;
+            font-size: 2rem;
+        }
+
+        .feature-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .feature-description {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 6rem 0;
+            background: var(--gradient);
+            text-align: center;
+            color: white;
+        }
+
+        .cta h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .cta p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .btn-white {
+            background: white;
+            color: var(--primary-color);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-white:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--text-primary);
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        .footer p {
+            margin-bottom: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.6s ease;
+        }
+
+        .scroll-reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .mobile-menu {
+                display: block;
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            .container {
+                padding: 0 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="index.html" class="logo">Bulbul Ahmed</a>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#skills">Skills</a></li>
+                    <li><a href="index.html#experience">Experience</a></li>
+                    <li><a href="index.html#projects">Projects</a></li>
+                    <li><a href="service.html" class="active">Services</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+                <div class="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="fade-in-up">Professional Services</h1>
+                <p class="fade-in-up">
+                    Delivering scalable, enterprise-grade software solutions with cutting-edge technologies 
+                    and best practices to drive your business forward.
+                </p>
+                <div class="breadcrumb fade-in-up">
+                    <a href="index.html">Home</a>
+                    <i class="fas fa-chevron-right"></i>
+                    <span>Services</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Overview -->
+    <section class="services-overview">
+        <div class="container">
+            <div class="section-header scroll-reveal">
+                <h2 class="section-title">What I Offer</h2>
+                <p class="section-subtitle">
+                    Comprehensive software development services backed by 5+ years of industry experience
+                </p>
+            </div>
+            
+            <div class="services-stats">
+                <div class="stat-card scroll-reveal">
+                    <div class="stat-icon">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <div class="stat-number">20+</div>
+                    <div class="stat-label">Projects Delivered</div>
+                </div>
+                <div class="stat-card scroll-reveal">
+                    <div class="stat-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-number">15+</div>
+                    <div class="stat-label">Happy Clients</div>
+                </div>
+                <div class="stat-card scroll-reveal">
+                    <div class="stat-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="stat-number">5+</div>
+                    <div class="stat-label">Years Experience</div>
+                </div>
+                <div class="stat-card scroll-reveal">
+                    <div class="stat-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <div class="stat-number">99%</div>
+                    <div class="stat-label">Success Rate</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Services -->
+    <section class="core-services">
+        <div class="container">
+            <div class="section-header scroll-reveal">
+                <h2 class="section-title">Core Services</h2>
+                <p class="section-subtitle">
+                    Specialized in enterprise-grade solutions using modern technologies and best practices
+                </p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card scroll-reveal">
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <i class="fas fa-server"></i>
+                        </div>
+                        <h3 class="service-title">Enterprise Backend Development</h3>
+                        <p class="service-subtitle">Scalable & High-Performance Systems</p>
+                    </div>
+                    <div class="service-content">
+                        <p class="service-description">
+                            Build robust, scalable backend systems using Java, Spring Boot, and microservices 
+                            architecture. Perfect for enterprise applications that need to handle high traffic 
+                            and complex business logic.
+                        </p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> RESTful API Development</li>
+                            <li><i class="fas fa-check"></i> Microservices Architecture</li>
+                            <li><i class="fas fa-check"></i> Database Design & Optimization</li>
+                            <li><i class="fas fa-check"></i> Security Implementation</li>
+                            <li><i class="fas fa-check"></i> Performance Optimization</li>
+                            <li><i class="fas fa-check"></i> Integration Services</li>
+                        </ul>
+                        <div class="service-tech">
+                            <span class="tech-tag">Java</span>
+                            <span class="tech-tag">Spring Boot</span>
+                            <span class="tech-tag">Microservices</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">MongoDB</span>
+                        </div>
+                    </div>
+                    <div class="service-price">
+                        <p class="price-text">Starting from $50/hour</p>
+                        <a href="#contact" class="btn btn-primary">
+                            <i class="fas fa-arrow-right"></i> Get Started
+                        </a>
+                    </div>
+                </div>
+
+                <div class="service-card scroll-reveal">
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <i class="fas fa-cloud"></i>
+                        </div>
+                        <h3 class="service-title">Cloud Migration & Deployment</h3>
+                        <p class="service-subtitle">AWS & Azure Cloud Solutions</p>
+                    </div>
+                    <div class="service-content">
+                        <p class="service-description">
+                            Migrate your applications to the cloud with zero downtime. Implement DevOps 
+                            practices, containerization, and CI/CD pipelines for efficient deployment 
+                            and scalability.
+                        </p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Cloud Architecture Design</li>
+                            <li><i class="fas fa-check"></i> Docker Containerization</li>
+                            <li><i class="fas fa-check"></i> Kubernetes Orchestration</li>
+                            <li><i class="fas fa-check"></i> CI/CD Pipeline Setup</li>
+                            <li><i class="fas fa-check"></i> Infrastructure as Code</li>
+                            <li><i class="fas fa-check"></i> Monitoring & Logging</li>
+                        </ul>
+                        <div class="service-tech">
+                            <span class="tech-tag">AWS</span>
+                            <span class="tech-tag">Azure</span>
+                            <span class="tech-tag">Docker</span>
+                            <span class="tech-tag">Kubernetes</span>
+                            <span class="tech-tag">Jenkins</span>
+                        </div>
+                    </div>
+                    <div class="service-price">
+                        <p class="price-text">Project-based pricing</p>
+                        <a href="#contact" class="btn btn-primary">
+                            <i class="fas fa-arrow-right"></i> Get Quote
+                        </a>
+                    </div>
+                </div>
+
+                <div class="service-card scroll-reveal">
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h3 class="service-title">Full-Stack Web Development</h3>
+                        <p class="service-subtitle">Modern Web Applications</p>
+                    </div>
+                    <div class="service-content">
+                        <p class="service-description">
+                            Create modern, responsive web applications with seamless user experience. 
+                            From concept to deployment, I handle both frontend and backend development 
+                            with industry best practices.
+                        </p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Responsive Web Design</li>
+                            <li><i class="fas fa-check"></i> Single Page Applications</li>
+                            <li><i class="fas fa-check"></i> Progressive Web Apps</li>
+                            <li><i class="fas fa-check"></i> E-commerce Solutions</li>
+                            <li><i class="fas fa-check"></i> Content Management Systems</li>
+                            <li><i class="fas fa-check"></i> Third-party Integrations</li>
+                        </ul>
+                        <div class="service-tech">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Angular</span>
+                            <span class="tech-tag">TypeScript</span>
+                            <span class="tech-tag">Spring Boot</span>
+                            <span class="tech-tag">REST APIs</span>
+                        </div>
+                    </div>
+                    <div class="service-price">
+                        <p class="price-text">Starting from $2,000</p>
+                        <a href="#contact" class="btn btn-primary">
+                            <i class="fas fa-arrow-right"></i> Discuss Project
+                        </a>
+                    </div>
+                </div>
+
+                <div class="service-card scroll-reveal">
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3 class="service-title">Code Review & Optimization</h3>
+                        <p class="service-subtitle">Performance & Quality Assurance</p>
+                    </div>
+                    <div class="service-content">
+                        <p class="service-description">
+                            Improve your existing codebase with comprehensive code reviews, performance 
+                            optimization, and best practices implementation. Ensure your applications 
+                            are secure, maintainable, and scalable.
+                        </p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Code Quality Analysis</li>
+                            <li><i class="fas fa-check"></i> Performance Optimization</li>
+                            <li><i class="fas fa-check"></i> Security Audit</li>
+                            <li><i class="fas fa-check"></i> Refactoring Services</li>
+                            <li><i class="fas fa-check"></i> Documentation Improvement</li>
+                            <li><i class="fas fa-check"></i> Best Practices Implementation</li>
+                        </ul>
+                        <div class="service-tech">
+                            <span class="tech-tag">SonarQube</span>
+                            <span class="tech-tag">Code Analysis</span>
+                            <span class="tech-tag">Testing</span>
+                            <span class="tech-tag">Optimization</span>
+                            <span class="tech-tag">Documentation</span>
+                        </div>
+                    </div>
+                    <div class="service-price">
+                        <p class="price-text">Starting from $40/hour</p>
+                        <a href="#contact" class="btn btn-primary">
+                            <i class="fas fa-arrow-right"></i> Request Review
+                        </a>
+                    </div>
+                </div>
+
+                <div class="service-card scroll-reveal">
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <h3 class="service-title">Database Design & Management</h3>
+                        <p class="service-subtitle">Efficient Data Solutions</p>
+                    </div>
+                    <div class="service-content">
+                        <p class="service-description">
+                            Design and implement efficient database solutions that scale with your business. 
+                            From relational to NoSQL databases, ensure optimal performance and data integrity 
+                            for your applications.
+                        </p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Database Architecture Design</li>
+                            <li><i class="fas fa-check"></i> Performance Tuning</li>
+                            <li><i class="fas fa-check"></i> Data Migration Services</li>
+                            <li><i class="fas fa-check"></i> Backup & Recovery Strategy</li>
+                            <li><i class="fas fa-check"></i> Query Optimization</li>
+                            <li><i class="fas fa-check"></i> Monitoring & Maintenance</li>
+                        </ul>
+                        <div class="service-tech">
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">MySQL</span>
+                            <span class="tech-tag">MongoDB</span>
+                            <span class="tech-tag">Redis</span>
+                            <span class="tech-tag">Elasticsearch</span>
+                        </div>
+                    </div>
+                    <div class="service-price">
+                        <p class="price-text">Custom pricing</p>
+                        <a href="#contact" class="btn btn-primary">
+                            <i class="fas fa-arrow-right"></i> Get Consultation
+                        </a>
+                    </div>
+                </div>
+
+                <div class="service-card scroll-reveal">
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3 class="service-title">Technical Consulting & Training</h3>
+                        <p class="service-subtitle">Knowledge Transfer & Guidance</p>
+                    </div>
+                    <div class="service-content">
+                        <p class="service-description">
+                            Leverage my expertise to guide your development team or enhance your technical 
+                            skills. From architecture decisions to technology adoption, get expert advice 
+                            tailored to your specific needs.
+                        </p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Technical Architecture Review</li>
+                            <li><i class="fas fa-check"></i> Technology Stack Selection</li>
+                            <li><i class="fas fa-check"></i> Team Training & Mentoring</li>
+                            <li><i class="fas fa-check"></i> Best Practices Workshop</li>
+                            <li><i class="fas fa-check"></i> Project Planning & Strategy</li>
+                            <li><i class="fas fa-check"></i> 1-on-1 Mentoring Sessions</li>
+                        </ul>
+                        <div class="service-tech">
+                            <span class="tech-tag">Consulting</span>
+                            <span class="tech-tag">Training</span>
+                            <span class="tech-tag">Mentoring</span>
+                            <span class="tech-tag">Strategy</span>
+                            <span class="tech-tag">Planning</span>
+                        </div>
+                    </div>
+                    <div class="service-price">
+                        <p class="price-text">Starting from $60/hour</p>
+                        <a href="#contact" class="btn btn-primary">
+                            <i class="fas fa-arrow-right"></i> Book Session
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process">
+        <div class="container">
+            <div class="section-header scroll-reveal">
+                <h2 class="section-title">My Development Process</h2>
+                <p class="section-subtitle">
+                    Streamlined approach ensuring quality delivery and client satisfaction
+                </p>
+            </div>
+            
+            <div class="process-steps">
+                <div class="process-step scroll-reveal">
+                    <div class="step-number">1</div>
+                    <div class="step-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3 class="step-title">Discovery & Planning</h3>
+                    <p class="step-description">
+                        Understanding your business requirements, technical constraints, and project goals 
+                        to create a comprehensive development strategy.
+                    </p>
+                </div>
+                
+                <div class="process-step scroll-reveal">
+                    <div class="step-number">2</div>
+                    <div class="step-icon">
+                        <i class="fas fa-drafting-compass"></i>
+                    </div>
+                    <h3 class="step-title">Architecture Design</h3>
+                    <p class="step-description">
+                        Creating scalable system architecture, database design, and technology stack 
+                        selection based on your specific needs and future growth plans.
+                    </p>
+                </div>
+                
+                <div class="process-step scroll-reveal">
+                    <div class="step-number">3</div>
+                    <div class="step-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3 class="step-title">Development & Testing</h3>
+                    <p class="step-description">
+                        Implementing the solution using agile methodology with regular updates, 
+                        comprehensive testing, and code reviews to ensure quality.
+                    </p>
+                </div>
+                
+                <div class="process-step scroll-reveal">
+                    <div class="step-number">4</div>
+                    <div class="step-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3 class="step-title">Deployment & Support</h3>
+                    <p class="step-description">
+                        Seamless deployment to production environment with monitoring setup, 
+                        documentation delivery, and ongoing support for maintenance.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Me -->
+    <section class="why-choose">
+        <div class="container">
+            <div class="section-header scroll-reveal">
+                <h2 class="section-title">Why Choose My Services</h2>
+                <p class="section-subtitle">
+                    Combining technical expertise with business acumen for optimal results
+                </p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card scroll-reveal">
+                    <div class="feature-icon">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <h3 class="feature-title">Proven Expertise</h3>
+                    <p class="feature-description">
+                        5+ years of hands-on experience in enterprise software development with a 
+                        track record of successful project deliveries across various industries.
+                    </p>
+                </div>
+                
+                <div class="feature-card scroll-reveal">
+                    <div class="feature-icon">
+                        <i class="fas fa-expand-arrows-alt"></i>
+                    </div>
+                    <h3 class="feature-title">Scalable Solutions</h3>
+                    <p class="feature-description">
+                        Focus on building scalable, maintainable solutions that grow with your business. 
+                        Every solution is designed with future expansion and performance in mind.
+                    </p>
+                </div>
+                
+                <div class="feature-card scroll-reveal">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="feature-title">Security First</h3>
+                    <p class="feature-description">
+                        Implementing security best practices from the ground up. Your applications 
+                        will be protected against common vulnerabilities and threats.
+                    </p>
+                </div>
+                
+                <div class="feature-card scroll-reveal">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3 class="feature-title">Timely Delivery</h3>
+                    <p class="feature-description">
+                        Committed to meeting deadlines without compromising quality. Regular updates 
+                        and transparent communication throughout the development process.
+                    </p>
+                </div>
+                
+                <div class="feature-card scroll-reveal">
+                    <div class="feature-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3 class="feature-title">Modern Technologies</h3>
+                    <p class="feature-description">
+                        Always up-to-date with the latest technologies and industry trends. Your 
+                        solution will leverage modern tools and frameworks for optimal performance.
+                    </p>
+                </div>
+                
+                <div class="feature-card scroll-reveal">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3 class="feature-title">Ongoing Support</h3>
+                    <p class="feature-description">
+                        Comprehensive documentation and post-deployment support ensure your team 
+                        can maintain and enhance the solution effectively.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to Scale Your Business?</h2>
+            <p>Let's discuss how I can help you build the perfect solution for your needs.</p>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <a href="https://calendly.com/ahmedbulbul"  class="btn btn-white" target="_blank" rel="noopener">
+                    <i class="fas fa-calendar"></i> Schedule a Meeting
+                </a>
+                <a href="index.html#projects" class="btn btn-secondary" style="background: rgba(255,255,255,0.1); color: white; border: 2px solid rgba(255,255,255,0.3);">
+                    <i class="fas fa-eye"></i> View Portfolio
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Bulbul Ahmed. All rights reserved.</p>
+            <p>Senior Software Engineer | Java & Spring Boot Specialist</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerHeight = document.querySelector('.header').offsetHeight;
+                    const targetPosition = target.offsetTop - headerHeight;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Scroll reveal animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.scroll-reveal').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        // Add loading animation
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '0';
+            setTimeout(() => {
+                document.body.style.transition = 'opacity 0.5s ease';
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+
+        // Contact button clicks
+        document.querySelectorAll('a[href="#contact"]').forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                // Redirect to main page with contact section
+                window.location.href = 'index.html#contact';
+            });
+        });
+    </script>
+</body>
+</html>
